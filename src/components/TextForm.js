@@ -14,6 +14,12 @@ export default function TextForm(props) {
         setText(event.target.value);
 
     }
+    const handleClick =()=>{
+      //console.log("Upper case was cleaked");
+
+      setText("");
+
+  }
     const handleLowClick =()=>{
       console.log("Upper case was cleaked"+text);
       let newText = text.toLowerCase();
@@ -30,13 +36,14 @@ export default function TextForm(props) {
 </div>
 <button className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to uppercase </button>
 <button className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to lowercase </button>
+<button className="btn btn-primary mx-1 my-1" onClick={handleClick}>Clear the phrase </button>
 
       
     </div>
     <div className="container my-3" style={{color:props.mode==='dark'?'white':'black'}}>
       <h2>Your text summary</h2>
 
-      <p>{text.split(" ")
+      <p>{text.split(/\s+/)
             .filter(function(n) { return n !== '' })
             .length} words and {text.length} characters</p>
       <p>{0.008* text.split(" ").length} Minutes read</p>
